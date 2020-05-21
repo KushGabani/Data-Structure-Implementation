@@ -54,21 +54,7 @@ public class LinkedList {
         this.size++;
     }
 
-    public void add(int data)  {
-        Node node = new Node(data);
-        this.tail.next = node;
-        this.tail = node;
-        this.size++;
-    }
-
     public void addBegin(Node node) {
-        node.next = this.head;
-        this.head = node;
-        this.size++;
-    }
-
-    public void addBegin(int data) {
-        Node node = new Node(data);
         node.next = this.head;
         this.head = node;
         this.size++;
@@ -93,15 +79,19 @@ public class LinkedList {
     }
 
     public void pop() {
-        Node temp = this.head;
-        for(int i = 0; i < size; i++) {  temp = temp.next; }
+        if(this.head != null) {
+            Node temp = this.head;
+            for (int i = 0; i < size; i++) {
+                temp = temp.next;
+            }
 
-        temp.next = null;
-        this.tail = temp;
+            temp.next = null;
+            this.tail = temp;
+        }
     }
 
     public void shift() {
-        this.head = this.head.next;
+        if(this.head != null) this.head = this.head.next;
     }
 
     public boolean searchNode(int data) {
@@ -138,17 +128,6 @@ public class LinkedList {
 
 class LinkedListMain {
     public static void main(String[]args) {
-        Scanner in = new Scanner(System.in);
-        LinkedList list = new LinkedList();
-        System.out.print("Enter Your data for the linked list : (e.g. like 1,2,3,4 ...) \n: ");
-        String[] DataInput = in.next().split(",");
-        int[] listData = new int[DataInput.length];
-
-        for (int i = 0; i < DataInput.length; i++) { listData[i] = Integer.parseInt(DataInput[i]); }
-
-        list.createList(listData);
-        list.displayList();
-
-        list = null;
+        // Your test code goes here........
     }
 }
