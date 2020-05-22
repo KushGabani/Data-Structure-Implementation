@@ -7,7 +7,7 @@
 
 The following implementation of the data structures are just for education purposes and is not meant to be referred to as guide. These data structure implemenetation includes basic functions of ADTs.
 
-#### LinkedList.java -> This file contains the following contents.
+#### LinkedList.java -> This file contains the following contents :-
      Class LinkedList : This Class encapsulates the implementation of the list ADT.
      
      Core Variables of Class LinkedList : 
@@ -54,7 +54,7 @@ The following implementation of the data structures are just for education purpo
 <br>                  
 <hr>
 <br>
-#### Heap.java -> This file contains the following content
+#### Heap.java -> This file contains the following contents :-
      Class Heap : This Class encapsulates the implementation of a Heap Data Structure (Specifically a MAX HEAP). A min heap can be implemented symmetrically.
      
      Core variables of class Heap :
@@ -106,6 +106,23 @@ The following implementation of the data structures are just for education purpo
 <hr>
 <br>
     
+#### PriorityQueue.java -> This file contains the following contains :-
+###### for simplicity, the value of the element determines its priority. i.e. An element with a large value has high priority.
+
+     Class PriorityQueue : This class encapsulates the implementation of a PriorityQueue data structure. This Class inherits the Class Heap from Heap.java above.
      
+     function PriorityQueue() : A constructor that is used to initialise to create a priority queue.
      
+     function PriorityQueue() : An overloaded constructor that is used to initialise to create a priority queue with a speicied data set.
+                                args : (int[]) An array of integers containing the values to be inserted in the priority queue
+                                returns : void
+                                
+     function enqueue() : This function inserts a value into the priority queue
+                          args : (int) The element to be inserted.
+                          returns : 
      
+     function dequeue() : This function returns and removes the element with the highest priority in the prioirity queue.
+                           args : null
+                           returns : (int) the element with the highest priority.
+                           
+     function peek() : This function only returns the element with the highest priority.
