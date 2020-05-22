@@ -7,7 +7,7 @@ public class DoublyLinkedList {
     Node tail;
     int size;
 
-    class Node {
+    static class Node {
         int data;
         Node next;
         Node prev;
@@ -152,6 +152,7 @@ public class DoublyLinkedList {
 class DoublyLinkedListMain {
     public static void main(String[]args) {
         Scanner in = new Scanner(System.in);
+        DoublyLinkedList dll = new DoublyLinkedList();
         //Your test code goes your
     }
 }
