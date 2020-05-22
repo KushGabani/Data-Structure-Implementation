@@ -48,9 +48,22 @@ The following implementation of the data structures are just for education purpo
                               args : (int) The data to be searched
                               returns : boolean (True - if found, false - if not found)
                               
-     function removeAt() : This function is used to remove a data from the LinkedList
+     
+     function getNode() : This function is used to search a specific Node in the LinkedList and return the node.
+                              args : (int) The data to be searched
+                              returns : (Node object)
+                              
+     function getPreviousNode() : This function is used to search a node in the list and return its predecessor.
+                                  args : (int) The data whose predecessor needs to be found.
+                                  retunrs : (Node Object) It's predecessor.
+                              
+     function remove() : This function is used to remove a data from the LinkedList
                            args : (int) The data to be removed
                            returns : void
+                           
+      function update() : This function is used to update a value in the LinkedList.
+                          args : (int) The old value to be update, (int) The new value to be replaced.
+                          returns : void
 <br>                  
 <hr>
 <br>
