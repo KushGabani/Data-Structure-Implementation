@@ -127,7 +127,7 @@ public class LinkedList {
     public void remove(int data) {
         Node temp;
         if (searchNode(data)) {
-            temp = getNode(data);
+            temp = getPreviousNode(data);
             temp.next = temp.next.next;
         }
         else
