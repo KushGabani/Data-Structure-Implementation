@@ -103,8 +103,8 @@ public class LinkedList {
         return false;
     }
 
-    public Node searchNode(Node list, int data) {
-        Node temp = list;
+    public Node getPreviousNode(int data) {
+        Node temp = this.head;
         Node prevNode = new Node();
 
         for(temp = this.head; temp != null; temp = temp.next)
@@ -115,14 +115,29 @@ public class LinkedList {
         return null;
     }
 
-    public void removeAt(int data) {
+    public Node getNode(int data) {
+        Node temp = this.head;
+        for(temp = this.head; temp != null; temp = temp.next)
+        {
+            if(temp.data == data) {     return temp;    }
+        }
+        return null;
+    }
+
+    public void remove(int data) {
         Node temp;
         if (searchNode(data)) {
-            temp = searchNode(this.head, data);
+            temp = getNode(data);
             temp.next = temp.next.next;
         }
         else
             System.out.println("Node to be deleted is not found in the LinkedList.");
+    }
+
+    public void update(int oldData, int newData) {
+        Node nodeToBeUpdated = getNode(oldData);
+        if(nodeToBeUpdated != null) nodeToBeUpdated.data = newData;
+        else System.out.println("The node to be updated is not found in the LinkedList.");
     }
 }
 
