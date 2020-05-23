@@ -44,7 +44,7 @@ The following implementation of the data structures are just for education purpo
                              
      function pop() : This function is used to remove the last element of the LinkedList
                       args : null
-                      returns : void
+                      returns : (int) -1 if the list is empty.
                       
      function shift() : This function is used to remove the first node of the LinkedList
                         args : null
@@ -144,6 +144,54 @@ The following implementation of the data structures are just for education purpo
 <hr>
 <br>
 
+#### StackWithLinkedList.java -> This file contains the following content :-
+      Class StackWithLinkedList : This class encapsulates the implementation of stack ADT using LinkedList
+      
+      function StackWithLinkedList : This is a constructor that is used to intialise a stack object.
+                                    args : (int[]) dataset of integers to add into the stack
+
+     function StackWithLinkedList : This is an overloaded constructor that is used to initilialise a default stack object.
+
+     function push() : This function is used to add an element into the stack.
+                      args : (int) The element to be added.
+                      return : void
+                      
+     function pop() : This function is used to remove an element into the stack.
+                      args : null
+                      return : (int) the elemenet popped from the stack. 1 if the stack is empty.
+                      
+     function peek() : This function is used to retrieve the value of top most element of the stack without removing it.
+                       args : void
+                       return : (int) -1 if the stack is empty.
+     
+<br>
+<hr>
+<br>
+
+ #### StackWithArray.java -> This file contains the followuing content :-
+      Class StackWithArray : This class encapsulates the implementation of stack ADT using arrays
+      
+      function StackWithArray : This is a constructor that is used to intialise a stack object.
+                               args : (int[]) dataset of integers to add into the stack
+
+     function StackWithArray : This is an overloaded constructor that is used to initilialise a default stack object
+                              args : (int) the size of the stack.
+
+     function push() : This function is used to add an element into the stack.
+                      args : (int) The element to be added.
+                      return : void
+                      
+     function pop() : This function is used to remove an element into the stack.
+                      args : null
+                      return : (int) the elemenet popped from the stack. 1 if the stack is empty.
+                      
+     function peek() : This function is used to retrieve the value of top most element of the stack without removing it.
+                       args : void
+                       return : (int) -1 if the stack is empty.
+ 
+<br>
+<hr>
+<br>
 
 #### Heap.java -> This file contains the following contents :-
      Class Heap : This Class encapsulates the implementation of a Heap Data Structure (Specifically a MAX HEAP). A min heap can be implemented symmetrically.
