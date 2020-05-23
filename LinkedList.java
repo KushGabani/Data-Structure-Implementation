@@ -6,7 +6,7 @@ public class LinkedList {
     Node head;
     Node tail;
     int size;
-    class Node {
+    static class Node {
         int data;
         Node next;
 
@@ -55,8 +55,14 @@ public class LinkedList {
     }
 
     public void addBegin(Node node) {
-        node.next = this.head;
-        this.head = node;
+        if(this.head != null) {
+            this.head = node;
+        }
+        else {
+            node.next = this.head;
+            this.head = node;
+        }
+
         this.size++;
     }
 
@@ -78,16 +84,18 @@ public class LinkedList {
 
     }
 
-    public void pop() {
+    public int pop() {
         if(this.head != null) {
             Node temp = this.head;
             for (int i = 0; i < size; i++) {
                 temp = temp.next;
             }
-
+            int poppedValue = temp.next.data;
             temp.next = null;
             this.tail = temp;
+            return poppedValue;
         }
+        return -1;
     }
 
     public void shift() {
