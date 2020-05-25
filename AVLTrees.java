@@ -139,23 +139,40 @@ public class AVLTrees {
         // Notice when the balance factor is +ve, then the node is left-heavy
         // And when the balance factor is -ve, then the node is right-heavy
 
-        //Case 1 : When X, Y and Z all are in left alignment
-        /*          X
-         *       Y
-         *    Z
-         */
         while(currNode != null) {
             if(getBalanceFactor(currNode) > 1) {
+                //Case 1 : When X, Y and Z all are in left alignment
+                /*          X
+                 *       Y
+                 *    Z
+                 */
                 if(currNode.leftChild.leftChild != null)
                     rotateRight(currNode);
+
+                //Case 2 : When X, Y and Z all are in zig zag alignment
+                /*     X
+                 *  Y
+                 *     Z
+                 */
                 else {
                     rotateLeft(currNode.leftChild);
                     rotateRight(currNode);
                 }
             }
             else if(getBalanceFactor(currNode) < -1) {
+                //Case 3 : When X, Y and Z all are in right alignment
+                /*  X
+                 *    Y
+                 *      Z
+                 */
                 if(currNode.rightChild.rightChild != null)
                     rotateLeft(currNode);
+
+                //Case 4 : When X, Y and Z all are in zag zig alignment
+                /*    X
+                 *      Y
+                 *    Z
+                 */
                 else {
                     rotateRight(currNode.rightChild);
                     rotateLeft(currNode);
