@@ -9,7 +9,7 @@ The following implementation of the data structures are just for education purpo
 
 <hr>
 <br>
-###### These are the data structures implemented in the repository :-
+#### These are the data structures implemented in the repository :-
 <ol>
      <li>Linked List</li>
      <li>Doubly Linked List</li>
@@ -25,7 +25,7 @@ The following implementation of the data structures are just for education purpo
 NOTE : Many more data structures will be added soon
 <br>
 <hr>
-#### LinkedList.java -> This file contains the following contents :-
+####  LinkedList.java -> This file contains the following contents :-
      Class LinkedList : This Class encapsulates the implementation of the list ADT.
      
      Core Variables of Class LinkedList : 
