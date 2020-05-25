@@ -193,6 +193,33 @@ The following implementation of the data structures are just for education purpo
 <hr>
 <br>
 
+#### Queue.java -> This file contains the following contents :-
+      Class Queue : This Class encapsulates the implemenetation of a Queue Data Structure using arrays.
+      
+      Core variables of Class Queue :
+               queue - (int[]) An array to implement queue.
+               front - (int) A pointer index to the front of the queue.
+               rear - (int) A pointer index to the rear of the queue.
+               size = (int) The maximum size of the queue.
+               
+      function Queue() : A contructor to initialise the queue object.
+                         args : (int) max size of the queue.
+                         
+      function Queue() : An overloaded constructor to intialise the queue object.
+                         args : (int[]) the dataset to add into the queue.
+                         
+      function enqueue() : A function to add an element into the queue using FIFO.
+                           args : (int) the data to be inserted.
+                           returns : void
+                           
+      function dequeue() : A function to remove an element following FIFO.
+                           args : void
+                           returns : (int) the removed value from the queue
+                           
+<br>
+<hr>
+<br>                      
+
 #### Heap.java -> This file contains the following contents :-
      Class Heap : This Class encapsulates the implementation of a Heap Data Structure (Specifically a MAX HEAP). A min heap can be implemented symmetrically.
      
