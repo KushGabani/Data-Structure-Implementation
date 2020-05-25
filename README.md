@@ -7,6 +7,24 @@
 
 The following implementation of the data structures are just for education purposes and is not meant to be referred to as guide. These data structure implemenetation includes basic functions of ADTs.
 
+<hr>
+<br>
+###### These are the data structures implemented in the repository :-
+<ol>
+     <li>Linked List</li>
+     <li>Doubly Linked List</li>
+     <li>Stack using Linked List</li>
+     <li>Queue using arrays</li>
+     <li>Heap</li>
+     <li>Priority Queue</li>
+     <li>Binary Search Tree</li>
+     <li>AVL Trees</li>
+     <li>Union-Find</li>
+</ol>
+
+NOTE : Many more data structures will be added soon
+<br>
+<hr>
 #### LinkedList.java -> This file contains the following contents :-
      Class LinkedList : This Class encapsulates the implementation of the list ADT.
      
@@ -456,4 +474,40 @@ The following implementation of the data structures are just for education purpo
 <hr>
 <br>
      
+#### UnionFind.java -> This file contains the following content
+     class UnionFind : This class encapsulated the implementation of Union-Find data structure.
      
+     Core variables of Class UnionFind :
+                    length - (int) The length of the whole dataset to be unified
+                    map - (int[]) An array where index to its parent in a union group are set.
+                    lengthEach - (int[]) An array consisting the length of each union group and its elements.
+                    
+     function UnionFind() : A constructor to intialise the UnionFind object.
+                         args : (int) the size of the array
+                         
+                         <b> NOTE : By default we assume a group with values from 0 to N that will be unified according to the test code. </b>
+                         
+     function find() : This function returns the root of a integer node specified.
+                       args : (int) the value whose group root needs to be found.
+                       returns : (int) the root of the union subgroup.
+                       
+     function compressPath() : This function is used to compress the path between the integer value and its root by directly storing the root of the sub group. 
+                              This in turn gives us amortized constant time for many operations.
+                         args : (int) The value whose path needs to be compressed. 
+                         returns : void
+                         
+     function belongToSameGroup() : This function check whether two values belong to the same union sub group.
+                         args : (int) First value, (int) Second Value
+                         returns : (boolean) true if they belong to the same group, else false
+                         
+     function componentSize() : This function returns the path size of the specified value
+                         args : (int) The value whose size needs to be determined.
+                         returns : (int) the size of the value down the leaf element
+                         
+     function unify() : This function unifies two subgroups into one.
+                         args : (int) root of first subgroup, (int) root of second subgroup
+                         returns : void
+                         
+<br>
+<hr>
+<br>
