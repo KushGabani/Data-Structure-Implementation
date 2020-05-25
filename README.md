@@ -392,5 +392,68 @@ The following implementation of the data structures are just for education purpo
 <br>
 <hr>
 <br>
+
+#### AVLTrees.java -> This file contains the following contents
+     
+     Class AVLTrees : The class encapsulates the implementation of AVL Trees a.k.a. self-balanced binary search trees.
+     
+     Core Variables of Class AVLTrees :
+                         root - (Node Object) A pointer to the root of the tree.
+                         
+     Class Node : This is a nested class that forms the fundamental building block of the AVL trees.
+     
+     Core variables of Class Node : 
+                         data - (int) The actual data of the node
+                         leftChild - (Node Object) A pointer to the left subtree of the curren node
+                         rightChild - (Node Object) A pointer to the right subtree of the current node.
+                         parent - (Node Objecr) A pointer to the parent node of the current node.
+                         relativeHeight - (int) The height of the current node i.e. the longest path to the leaf from the current node.
+                         
+      function Node() : A constructor to initialise a node for the tree. By default, relative height is 1 and other Node pointers are null.
+                         args : (int) The data to be stored in the node.
+                         
+      function Node() : A overloaded constructor to initialise a node for the tree when the value to be stored is not specified.
+      
+      function AVLTrees() A constructor of the class AVLTrees to intialise a new tree object
+      
+      PRIVATE function getHeight() : This function returns the relative height of a node.
+                                   args : (Node Object) The Node whose height is needed to be returned.
+                                   returns : (int) the relative height of the node.
+                                   
+     PRIVATE function getBalanceFactor() : this function returns the balance factor of the specified node.
+                                   args : (Node Object) The node whose balance factor needs to be determined.
+                                   returns : (int) the balance factor of the node.
+                                   
+     function display() : This function displays the tree using PREORDER traversal.
+                         args : (Node Object) from where display needs to be started.
+                         returns : void
+                         
+     function createTree() : This function is used to create an AVL tree while inserting into the tree.
+                         args : (int[]) the dataset to be inserted in the AVL tree.
+                         returns : void
+                         
+     function addNode() : This is a stand alone and a subsidiary function to add nodes into the tree.
+                         args : (Node Object) The parent node, (Node Object) new node to be added.
+                         returns : void
+                         
+     function updateheights() : This function is used to update relative heights of each node after insertion or rotation.
+                         args : (Node Object) The node whose heights needs to be updated.
+                         returns : void
+                         
+     function rotateLeft() : This function is the core method used in balacing BST and converting it into AVL trees.
+                         args : (Node Object) The Node whose left rotation needs to be done.
+                         returns : void.
+                         
+     function rotateRight() : This function is the core method used in balacing BST and converting it into AVL Trees.
+                         args : (Node Object) The Node whose right rotation needs to be done.
+                         returns : void.
+                    
+      function balanceTree() : This function balances the tree as nodes are added into the tree.
+                         args : (Node Object) The pointer to the node whose subtree needs to be balanced.
+                         returns : void
+                         
+<br>
+<hr>
+<br>
      
      
