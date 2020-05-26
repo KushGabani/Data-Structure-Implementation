@@ -11,9 +11,9 @@ Data structures serve as the basis for abstract data types (ADT). The ADT define
 
 The following implementation of the data structures are just for education purposes and is not meant to be referred to as guide. These data structure implemenetation includes basic functions of ADTs.
 
-<hr>
-<br>
 #### These are the data structures implemented in the repository :-
+*Note : Best part is all the classes are generalised and can be used with any data type. For example, LinkedList can be Integer, String etc.*
+
 <ol>
      <li>Linked List</li>
      <li>Doubly Linked List</li>
@@ -41,13 +41,13 @@ NOTE : Many more data structures will be added soon
      Class Node : This is a nested class used inside LinkedList and provides basic building block for the LinkedList.
      
      Core variables of Class Node : 
-                      data - (int) The data stored in the node
+                      data - (type) The data stored in the node
                       next - (Node Object) A pointer to the next Node
      
      LinkedList() : A constructor for class LinkedList to initialise a LinkedList object.
      
      function createList() : This function creates a LinkedList for an object.
-                             args : (int) An array containing the dataset to be implementated as LinkedList.
+                             args : (type[]) An array containing the dataset to be implementated as LinkedList.
                              returns : void
      
      function add() : This is a subsidiary function that is used to a node at the end of a list.
@@ -57,40 +57,40 @@ NOTE : Many more data structures will be added soon
      function displayList() : This function displays all the nodes in the LinkedList.
                    
      function addBegin() : This function is used to add a new node at the beginning of a list.
-                           args : (Node Object) A Node object containing the data to be inserted
+                           args : (type) the data to be inserted
                            returns : void
 
      function addBetween() : This function is used to add a new node anywhere in the list
-                             args : (Node Object) A Node object to be inserted, position of the object
+                             args : (type) the data to be inserted, position of the node
                              returns : void
                              
      function pop() : This function is used to remove the last element of the LinkedList
                       args : null
-                      returns : (int) -1 if the list is empty.
+                      returns : (type) null, if the list is empty.
                       
      function shift() : This function is used to remove the first node of the LinkedList
                         args : null
-                        returns : void
+                        returns : (type) null, if the list is empty
                        
      function searchNode() : This function is used to search a specific Node in the LinkedList
-                              args : (int) The data to be searched
+                              args : (type) The data to be searched
                               returns : boolean (True - if found, false - if not found)
                               
      
      function getNode() : This function is used to search a specific Node in the LinkedList and return the node.
-                              args : (int) The data to be searched
+                              args : (type) The data to be searched
                               returns : (Node object)
                               
      function getPreviousNode() : This function is used to search a node in the list and return its predecessor.
-                                  args : (int) The data whose predecessor needs to be found.
+                                  args : (type) The data whose predecessor needs to be found.
                                   retunrs : (Node Object) It's predecessor.
                               
      function remove() : This function is used to remove a data from the LinkedList
-                           args : (int) The data to be removed
+                           args : (type) The data to be removed
                            returns : void
                            
       function update() : This function is used to update a value in the LinkedList.
-                          args : (int) The old value to be update, (int) The new value to be replaced.
+                          args : (type) The old value to be update, (int) The new value to be replaced.
                           returns : void
 <br>                  
 <hr>
@@ -108,18 +108,18 @@ NOTE : Many more data structures will be added soon
      Class Node : This is a nested class used inside LinkedList and provides basic building block for the DoublyLinkedList.
     
      Core variables of Class Node : 
-                      data - (int) The data stored in the node
+                      data - (type) The data stored in the node
                       next - (Node Object) A pointer to the next Node
                       prev - (Node Object) A pointer to the previous Node.
      
      DoublyLinkedList() : A constructor for class DoublyLinkedList to initialise a DoublyLinkedList object.
      
      function createList() : This function creates a DoublyLinkedList for an object.
-                             args : (int) An array containing the dataset to be implementated as LinkedList.
+                             args : (type[]) An array containing the dataset to be implementated as LinkedList.
                              returns : void
      
      function add() : This is a subsidiary function that is used to a node at the end of a list.
-                      args : (Node Object) A Node object containing the data to be inserted
+                      args : (type) the data to be inserted
                       returns : void
                       
      function displayList() : This function is used to display all the nodes in the list.
@@ -127,40 +127,40 @@ NOTE : Many more data structures will be added soon
      function displayReverse() : This function is used to display all the nodes in the list in reverse order.
                    
      function addBegin() : This function is used to add a new node at the beginning of a list.
-                           args : (Node Object) A Node object containing the data to be inserted
+                           args : (type) the data to be inserted
                            returns : void
 
      function addBetween() : This function is used to add a new node anywhere in the list
-                             args : (Node Object) A Node object to be inserted, position of the object
+                             args : (type) the data to be inserted, position of the object
                              returns : void
                              
      function pop() : This function is used to remove the last element of the DoublyLinkedList
                       args : null
-                      returns : void
+                      returns : (type) the data removed.
                       
      function shift() : This function is used to remove the first node of the DoublyLinkedList
                         args : null
-                        returns : void
+                        returns : (type) the data removed.
                        
      function searchNode() : This function is used to search a specific Node in the DoublyLinkedList
-                              args : (int) The data to be searched
+                              args : (type) The data to be searched
                               returns : boolean (True - if found, false - if not found)
                               
      
      function getNode() : This function is used to search a specific Node in the DoublyLinkedList and return the node.
-                              args : (int) The data to be searched
+                              args : (type) The data to be searched
                               returns : (Node object)
                               
      function getPreviousNode() : This function is used to search a node in the list and return its predecessor.
-                                  args : (int) The data whose predecessor needs to be found.
+                                  args : (type) The data whose predecessor needs to be found.
                                   retunrs : (Node Object) It's predecessor.
                               
      function remove() : This function is used to remove a data from the DoublyLinkedList
-                           args : (int) The data to be removed
+                           args : (type) The data to be removed
                            returns : void
                            
       function update() : This function is used to update a value in the DoublyLinkedList.
-                          args : (int) The old value to be update, (int) The new value to be replaced.
+                          args : (type) The old value to be update, (type) The new value to be replaced.
                           returns : void
 <br>                  
 <hr>
@@ -170,21 +170,21 @@ NOTE : Many more data structures will be added soon
       Class StackWithLinkedList : This class encapsulates the implementation of stack ADT using LinkedList
       
       function StackWithLinkedList : This is a constructor that is used to intialise a stack object.
-                                    args : (int[]) dataset of integers to add into the stack
+                                    args : (type[]) dataset of integers to add into the stack
 
      function StackWithLinkedList : This is an overloaded constructor that is used to initilialise a default stack object.
 
      function push() : This function is used to add an element into the stack.
-                      args : (int) The element to be added.
+                      args : (type) The element to be added.
                       return : void
                       
      function pop() : This function is used to remove an element into the stack.
                       args : null
-                      return : (int) the elemenet popped from the stack. 1 if the stack is empty.
+                      return : (type) the elemenet popped from the stack. 1 if the stack is empty.
                       
      function peek() : This function is used to retrieve the value of top most element of the stack without removing it.
                        args : void
-                       return : (int) -1 if the stack is empty.
+                       return : (type) null, if the stack is empty.
      
 <br>
 <hr>
@@ -489,7 +489,7 @@ NOTE : Many more data structures will be added soon
      function UnionFind() : A constructor to intialise the UnionFind object.
                          args : (int) the size of the array
                          
-                         <b> NOTE : By default we assume a group with values from 0 to N that will be unified according to the test code. </b>
+**NOTE : By default we assume a group with values from 0 to N that will be unified according to the test code.**
                          
      function find() : This function returns the root of a integer node specified.
                        args : (int) the value whose group root needs to be found.
