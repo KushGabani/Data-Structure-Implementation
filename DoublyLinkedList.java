@@ -2,24 +2,20 @@ package DataStructures;
 
 import java.util.Scanner;
 
-public class DoublyLinkedList {
-    Node head;
-    Node tail;
+public class DoublyLinkedList <type> {
+    Node<type> head;
+    Node<type> tail;
     int size;
 
-    static class Node {
-        int data;
-        Node next;
-        Node prev;
+    static class Node <type> {
+        type data;
+        Node<type> next;
+        Node<type> prev;
 
-        Node(int data) {
+        Node(type data) {
             this.data = data;
             this.next = null;
             this.prev = null;
-        }
-
-        Node() {
-            this(0);
         }
     }
 
@@ -29,9 +25,9 @@ public class DoublyLinkedList {
         this.size = 0;
     }
 
-    public void createList(int... newNodeData) {
-        for (int data : newNodeData) {
-            Node newNode = new Node(data);
+    public void createList(type... newNodeData) {
+        for (type data : newNodeData) {
+            Node<type> newNode = new Node<type>(data);
             if (size == 0) {
                 this.tail = this.head = newNode;
                 this.size++;
@@ -45,39 +41,42 @@ public class DoublyLinkedList {
     }
 
     public void displayList() {
-        for (Node temp = this.head; temp != null; temp = temp.next) {
+        for (Node<type> temp = this.head; temp != null; temp = temp.next) {
             System.out.println("Data : " + temp.data);
         }
     }
 
     public void displayReverse() {
-        for (Node temp = this.tail; temp != null; temp = temp.prev) {
+        for (Node<type> temp = this.tail; temp != null; temp = temp.prev) {
             System.out.println("Data : " + temp.data);
         }
     }
 
-    public void add(Node node) {
+    public void add(type newData) {
+        Node<type> node = new Node<type>(newData);
         this.tail.next = node;
         node.prev = this.tail;
         this.tail = node;
         this.size++;
     }
 
-    public void addBegin(Node node) {
+    public void addBegin(type newData) {
+        Node<type> node = new Node<type>(newData);
         node.next = this.head;
         this.head.prev = node;
         this.head = node;
         this.size++;
     }
 
-    public void addBetween(Node node, int pos) {
+    public void addBetween(type newData, int pos) {
+        Node<type> node = new Node<type>(newData);
         int count = 0;
-        Node temp;
+        Node<type> temp;
 
         if (pos == 1) {
-            addBegin(node);
+            addBegin(node.data);
         } else if (pos > 1 && pos < size) {
-            for (temp = this.head; count <= pos - 1; count++) {
+            for (temp = this.head; count <= pos - 2; count++) {
                 temp = temp.next;
             }
 
@@ -86,23 +85,31 @@ public class DoublyLinkedList {
             node.prev = temp;
             temp.next = node;
         } else
-            add(node);
+            add(node.data);
     }
 
-    public void pop() {
-        this.tail = this.tail.prev;
-        this.tail.next = null;
+    public type pop() {
+        if(this.head != null) {
+            type poppedValue = this.tail.data;
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+            return poppedValue;
+        }
+        return null;
     }
 
-    public void shift() {
+    public type shift() {
         if (this.head != null) {
+            type shiftedValue = this.head.data;
             this.head = this.head.next;
             this.head.prev = null;
+            return shiftedValue;
         }
+        return null;
     }
 
-    public boolean searchNode(int data) {
-        Node temp = this.head;
+    public boolean searchNode(type data) {
+        Node<type> temp = this.head;
         for (temp = this.head; temp != null; temp = temp.next) {
             if (temp.data == data) {
                 return true;
@@ -111,8 +118,8 @@ public class DoublyLinkedList {
         return false;
     }
 
-    public Node getPreviousNode(int data) {
-        Node temp = this.head;
+    public Node<type> getPreviousNode(type data) {
+        Node<type> temp = this.head;
 
         for (temp = this.head; temp != null; temp = temp.next) {
             if (temp.data == data) {
@@ -122,8 +129,8 @@ public class DoublyLinkedList {
         return null;
     }
 
-    public Node getNode(int data) {
-        Node temp = this.head;
+    public Node<type> getNode(type data) {
+        Node<type> temp = this.head;
         for (temp = this.head; temp != null; temp = temp.next) {
             if (temp.data == data) {
                 return temp;
@@ -132,8 +139,8 @@ public class DoublyLinkedList {
         return null;
     }
 
-    public void remove(int data) {
-        Node temp;
+    public void remove(type data) {
+        Node<type> temp;
         if (searchNode(data)) {
             temp = getPreviousNode(data);
             temp.next = temp.next.next;
@@ -142,8 +149,8 @@ public class DoublyLinkedList {
             System.out.println("Node to be deleted is not found in the LinkedList.");
     }
 
-    public void update(int oldData, int newData) {
-        Node nodeToBeUpdated = getNode(oldData);
+    public void update(type oldData, type newData) {
+        Node<type> nodeToBeUpdated = getNode(oldData);
         if (nodeToBeUpdated != null) nodeToBeUpdated.data = newData;
         else System.out.println("The node to be updated is not found in the LinkedList.");
     }
@@ -151,8 +158,7 @@ public class DoublyLinkedList {
 
 class DoublyLinkedListMain {
     public static void main(String[]args) {
-        Scanner in = new Scanner(System.in);
-        DoublyLinkedList dll = new DoublyLinkedList();
         //Your test code goes your
+        //DoublyLinkedList<> dll = new DoublyLinkedList<>();
     }
 }

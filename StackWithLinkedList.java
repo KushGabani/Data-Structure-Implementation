@@ -1,37 +1,33 @@
 package DataStructures;
 
-public class StackWithLinkedList extends LinkedList{
+public class StackWithLinkedList <type>{
+    LinkedList<type> stack;
 
-    StackWithLinkedList(int... dataset) {
-        super();
+    @SafeVarargs
+    StackWithLinkedList(type... dataset) {
+        stack = new LinkedList<type>();
 
-        for(int data : dataset) {
+        for(type data : dataset) {
             push(data);
         }
     }
 
-    StackWithLinkedList() {
-        this(5,3,4,7,8,2,1);
+    public void push(type data) {
+        stack.addBegin(data);
     }
 
-    public void push(int data) {
-        addBegin(new Node(data));
-    }
-
-    public int pop() {
-        if(size != 0) {
-            Node temp = this.head;
-            int poppedValue = temp.data;
-            this.head = this.head.next;
-            temp = null;
-            size--;
+    public type pop() {
+        if(stack.size != 0) {
+            type poppedValue = stack.head.data;
+            stack.head = stack.head.next;
+            stack.size--;
             return poppedValue;
         }
-        return -1;
+        return null;
     }
 
-    public Node peek() {
-        return this.head;
+    public type peek() {
+        return stack.head.data;
     }
 }
 

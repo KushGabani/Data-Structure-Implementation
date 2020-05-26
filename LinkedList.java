@@ -2,21 +2,21 @@ package DataStructures;
 
 import java.util.Scanner;
 
-public class LinkedList {
-    Node head;
-    Node tail;
+public class LinkedList <type> {
+    Node<type> head;
+    Node<type> tail;
     int size;
-    static class Node {
-        int data;
-        Node next;
+    static class Node <type> {
+        type data;
+        Node<type> next;
 
-        Node(int data) {
+        Node(type data) {
             this.data = data;
             this.next = null;
         }
 
         Node() {
-            this.data = 0;
+            this.data = null;
             this.next = null;
         }
     }
@@ -27,9 +27,9 @@ public class LinkedList {
         this.size = 0;
     }
 
-    public void createList(int... newNodeData) {
-        for(int data : newNodeData) {
-            Node newNode = new Node(data);
+    public void createList(type... newNodeData) {
+        for(type data : newNodeData) {
+            Node<type> newNode = new Node<type>(data);
             if(size == 0) {
                 this.tail = this.head = newNode;
                 this.size++;
@@ -43,67 +43,73 @@ public class LinkedList {
     }
 
     public void displayList() {
-        for(Node temp = this.head; temp != null; temp = temp.next) {
+        for(Node<type> temp = this.head; temp != null; temp = temp.next) {
             System.out.println("Data : " + temp.data);
         }
     }
 
-    public void add(Node node)  {
+    public void add(type newData)  {
+        Node<type> node = new Node<type>(newData);
         this.tail.next = node;
         this.tail = node;
         this.size++;
     }
 
-    public void addBegin(Node node) {
+    public void addBegin(type newData) {
+        Node<type> node = new Node<type>(newData);
         if(this.head != null) {
-            this.head = node;
-        }
-        else {
             node.next = this.head;
-            this.head = node;
         }
-
+        this.head = node;
         this.size++;
     }
 
-    public void addBetween(Node node, int pos) {
+    public void addBetween(type newData, int pos) {
+        Node<type> node = new Node<type>(newData);
         int count = 0;
-        Node temp;
+        Node<type> temp = this.head;
 
         if(pos == 1) {
-            addBegin(node);
+            addBegin(node.data);
         }
         else if(pos > 1 && pos < size){
-            for(temp = this.head; count <= pos - 1 ;count++) { temp = temp.next; }
+            while(count < pos - 2) {
+                count++;
+                temp = temp.next;
+            }
 
             node.next = temp.next;
             temp.next = node;
         }
         else
-            add(node);
+            add(node.data);
 
     }
 
-    public int pop() {
+    public type pop() {
         if(this.head != null) {
-            Node temp = this.head;
-            for (int i = 0; i < size; i++) {
-                temp = temp.next;
-            }
-            int poppedValue = temp.next.data;
+            Node<type> temp;
+            for (temp = this.head; temp.next.next != null; temp = temp.next);
+
+            type poppedValue = temp.next.data;
             temp.next = null;
             this.tail = temp;
             return poppedValue;
         }
-        return -1;
+        return null;
     }
 
-    public void shift() {
-        if(this.head != null) this.head = this.head.next;
+    public type shift() {
+        if(this.head != null) {
+            type removed = this.head.data;
+            this.head = this.head.next;
+            return removed;
+        }
+        return null;
     }
 
-    public boolean searchNode(int data) {
-        Node temp = this.head;
+    public boolean searchNode(type data) {
+        Node<type> temp = this.head;
         for(temp = this.head; temp != null; temp = temp.next)
         {
             if(temp.data == data) {     return true;    }
@@ -111,9 +117,9 @@ public class LinkedList {
         return false;
     }
 
-    public Node getPreviousNode(int data) {
-        Node temp = this.head;
-        Node prevNode = new Node();
+    public Node<type> getPreviousNode(type data) {
+        Node<type> temp = this.head;
+        Node<type> prevNode = new Node<type>();
 
         for(temp = this.head; temp != null; temp = temp.next)
         {
@@ -123,8 +129,8 @@ public class LinkedList {
         return null;
     }
 
-    public Node getNode(int data) {
-        Node temp = this.head;
+    public Node<type> getNode(type data) {
+        Node<type> temp = this.head;
         for(temp = this.head; temp != null; temp = temp.next)
         {
             if(temp.data == data) {     return temp;    }
@@ -132,8 +138,8 @@ public class LinkedList {
         return null;
     }
 
-    public void remove(int data) {
-        Node temp;
+    public void remove(type data) {
+        Node<type> temp;
         if (searchNode(data)) {
             temp = getPreviousNode(data);
             temp.next = temp.next.next;
@@ -142,8 +148,8 @@ public class LinkedList {
             System.out.println("Node to be deleted is not found in the LinkedList.");
     }
 
-    public void update(int oldData, int newData) {
-        Node nodeToBeUpdated = getNode(oldData);
+    public void update(type oldData, type newData) {
+        Node<type> nodeToBeUpdated = getNode(oldData);
         if(nodeToBeUpdated != null) nodeToBeUpdated.data = newData;
         else System.out.println("The node to be updated is not found in the LinkedList.");
     }
@@ -152,5 +158,6 @@ public class LinkedList {
 class LinkedListMain {
     public static void main(String[]args) {
         // Your test code goes here........
+        //LinkedList<> list = new LinkedList<>();
     }
 }
