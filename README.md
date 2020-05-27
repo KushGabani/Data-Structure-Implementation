@@ -30,6 +30,7 @@ NOTE : Many more data structures will be added soon
 <br>
 <hr>
 ####  LinkedList.java -> This file contains the following contents :-
+     
      Class LinkedList : This Class encapsulates the implementation of the list ADT.
      
      Core Variables of Class LinkedList : 
@@ -170,9 +171,6 @@ NOTE : Many more data structures will be added soon
       Class StackWithLinkedList : This class encapsulates the implementation of stack ADT using LinkedList
       
       function StackWithLinkedList : This is a constructor that is used to intialise a stack object.
-                                    args : (type[]) dataset of integers to add into the stack
-
-     function StackWithLinkedList : This is an overloaded constructor that is used to initilialise a default stack object.
 
      function push() : This function is used to add an element into the stack.
                       args : (type) The element to be added.
@@ -191,53 +189,47 @@ NOTE : Many more data structures will be added soon
 <br>
 
  #### StackWithArray.java -> This file contains the followuing content :-
-      Class StackWithArray : This class encapsulates the implementation of stack ADT using arrays
-      
-      function StackWithArray : This is a constructor that is used to intialise a stack object.
-                               args : (int[]) dataset of integers to add into the stack
+      Class StackWithArray : This class encapsulates the implementation of stack ADT using ArrayList and therefore size is not needed to be determined.
 
      function StackWithArray : This is an overloaded constructor that is used to initilialise a default stack object
-                              args : (int) the size of the stack.
 
      function push() : This function is used to add an element into the stack.
-                      args : (int) The element to be added.
+                      args : (type) The element to be added.
                       return : void
                       
      function pop() : This function is used to remove an element into the stack.
                       args : null
-                      return : (int) the elemenet popped from the stack. 1 if the stack is empty.
+                      return : (type) the elemenet popped from the stack. 1 if the stack is empty.
                       
      function peek() : This function is used to retrieve the value of top most element of the stack without removing it.
                        args : void
-                       return : (int) -1 if the stack is empty.
+                       return : (type) null, if the stack is empty.
  
 <br>
 <hr>
 <br>
 
 #### Queue.java -> This file contains the following contents :-
-      Class Queue : This Class encapsulates the implemenetation of a Queue Data Structure using arrays.
+      Class Queue : This Class encapsulates the implemenetation of a Queue Data Structure using ArrayList.
       
       Core variables of Class Queue :
-               queue - (int[]) An array to implement queue.
+               queue - (type<>) An array to implement queue.
                front - (int) A pointer index to the front of the queue.
                rear - (int) A pointer index to the rear of the queue.
-               size = (int) The maximum size of the queue.
-               
-      function Queue() : A contructor to initialise the queue object.
-                         args : (int) max size of the queue.
                          
-      function Queue() : An overloaded constructor to intialise the queue object.
-                         args : (int[]) the dataset to add into the queue.
+      function Queue() : An constructor to intialise the queue object.
                          
       function enqueue() : A function to add an element into the queue using FIFO.
-                           args : (int) the data to be inserted.
+                           args : (type) the data to be inserted.
                            returns : void
                            
       function dequeue() : A function to remove an element following FIFO.
                            args : void
-                           returns : (int) the removed value from the queue
+                           returns : (type) the removed value from the queue
                            
+      function peek() : A function to see the next element to be removed from the queue.
+                         args : void
+                         returns : (type) the element at the front of the queue that will be removed next.
 <br>
 <hr>
 <br>                      
@@ -249,18 +241,14 @@ NOTE : Many more data structures will be added soon
                      heap - (ArrayList<Integer>) A dynamic array to visualise Heap Data Structure
                      
      function Heap() : A constructor of Heap class used to initialise its objects.
-                       args : (int[]) An array of integers to be visualised as a heap.
-                       returns : void
-                       
-     function Heap() : A overloaded constructor of Heap Class used to initialise its objects.
      
      PRIVATE function getLeftChild() : A private function that returns the index of left child of an element
-                                       args : (ArrayList<Integer>) the heap itself, (int) index of the element whose left child's index need to be found.
-                                       returns : int
+                                       args : (int) index of the element whose left child's index need to be found.
+                                       returns : (int) index of the left child if it exists, otherwise -1;
      
      PRIVATE function getRightChild() : A private function that returns the index of right child of an element.
-                                       args : (ArrayList<Integer>) the heap itself, (int) index of the element whose right child's index need to be found.
-                                       returns : int
+                                       args : the heap itself, (int) index of the element whose right child's index need to be found.
+                                       returns : (int) index of the right child if it exists, otherwise -1;
                                        
      function swap() : This function is used to swap to elements in the array
                        args : (int) First element's index, (int) Second element's index
@@ -284,7 +272,7 @@ NOTE : Many more data structures will be added soon
                              
      function removeNode() : This function is used to remove an element from the heap
                              args : (int) index of the element
-                             returns : (int) the value removed from the heap.
+                             returns : (type) the value removed from the heap.
                              
      function heapSort() : This function is used to sort an array using heap sort algorithm
                            args : null
@@ -297,27 +285,24 @@ NOTE : Many more data structures will be added soon
 #### PriorityQueue.java -> This file contains the following contains :-
 ###### for simplicity, the value of the element determines its priority. i.e. An element with a large value has high priority.
 
-     Class PriorityQueue : This class encapsulates the implementation of a PriorityQueue data structure. This Class inherits the Class Heap from Heap.java above.
+     Class PriorityQueue : This class encapsulates the implementation of a PriorityQueue data structure. This Class aggregaetes the Class Heap from Heap.java above.
      
      Core variables of the class PriorityQueue -
-                         * There is no internal variables because it inherits Heap.java *
+                              pqueue - (Heap Object) The main priority queue.
      
      function PriorityQueue() : A constructor that is used to initialise to create a priority queue.
-     
-     function PriorityQueue() : An overloaded constructor that is used to initialise to create a priority queue with a speicied data set.
-                                args : (int[]) An array of integers containing the values to be inserted in the priority queue
-                                returns : void
                                 
      function enqueue() : This function inserts a value into the priority queue
-                          args : (int) The element to be inserted.
-                          returns : 
+                          args : (type) The element to be inserted.
+                          returns : void
      
      function dequeue() : This function returns and removes the element with the highest priority in the prioirity queue.
                            args : null
-                           returns : (int) the element with the highest priority.
+                           returns : (type) the element with the highest priority.
                            
      function peek() : This function only returns the element with the highest priority.
-
+                         args : void
+                         returns : (type) the element with the highest priority without removing it.
 
 #### Tree.java -> This file contains the following contents :-
      
@@ -327,7 +312,7 @@ NOTE : Many more data structures will be added soon
                            root -  (Node object) A pointer to the root node of the tree.
                            size - (int) The size of the tree i.e. Height of the tree.
      
-     Class Node : This is a nested class that produces nodes for the tree.
+     Class Node : This is a nested class+++++++++++++++++++++++++++++++++ that produces nodes for the tree.
      
      Core varibles of the Class Node :
                           data - (int) this contains the value of the node.
