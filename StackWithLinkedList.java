@@ -3,13 +3,8 @@ package DataStructures;
 public class StackWithLinkedList <type>{
     LinkedList<type> stack;
 
-    @SafeVarargs
-    StackWithLinkedList(type... dataset) {
+    StackWithLinkedList() {
         stack = new LinkedList<type>();
-
-        for(type data : dataset) {
-            push(data);
-        }
     }
 
     public void push(type data) {

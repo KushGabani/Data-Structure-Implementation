@@ -3,26 +3,22 @@ package DataStructures;
 import org.jetbrains.annotations.NotNull;
 import java.util.Scanner;
 
-public class AVLTrees {
-    Node root;
+public class AVLTrees <type extends Comparable<type>> {
+    Node<type> root;
 
-    static class Node {
-        int data;
-        Node leftChild;
-        Node rightChild;
-        Node parent;
+    static class Node <type> {
+        type data;
+        Node<type> leftChild;
+        Node<type> rightChild;
+        Node<type> parent;
         int relativeHeight;
 
-        Node(int data) {
+        Node(type data) {
             this.data = data;
             this.leftChild = null;
             this.rightChild = null;
             this.parent = null;
             this.relativeHeight = 1;
-        }
-
-        Node() {
-            this(0);
         }
     }
 
@@ -30,19 +26,19 @@ public class AVLTrees {
         this.root = null;
     }
 
-    private int getHeight(Node node) {
+    private int getHeight(Node<type> node) {
         return (node == null) ? 0 : node.relativeHeight;
     }
 
-    private int getBalanceFactor(Node node) {
+    private int getBalanceFactor(Node<type> node) {
         return (node == null) ? 0 : getRelativeHeight(node.leftChild)- getRelativeHeight(node.rightChild);
     }
 
-    private int getRelativeHeight(Node node) {
+    private int getRelativeHeight(Node<type> node) {
         return (node == null) ? 0 : (Math.max(getHeight(node.leftChild), getHeight((node.rightChild))) + 1);
     }
 
-    public void display(Node currNode) {
+    public void display(Node<type> currNode) {
         if(currNode != null) {
             System.out.println(currNode.data + ", Height: " + getRelativeHeight(currNode)+ ", Balance Factor: " + getBalanceFactor(currNode));
             display(currNode.leftChild);
@@ -50,23 +46,21 @@ public class AVLTrees {
         }
     }
 
-    public void createTree(int @NotNull ... DATASET) {
-        for(int data : DATASET) {
-            Node newNode = new Node(data);
-            if(this.root == null) {
-                this.root = newNode;
-            }
-            else
-                addNode(this.root, newNode);
-
-            updateHeights(this.root);
-            balanceTree(newNode);
+    public void createTree(type data) {
+        Node<type> newNode = new Node<type>(data);
+        if(this.root == null) {
+            this.root = newNode;
         }
+        else
+            addNode(this.root, newNode);
+
+        updateHeights(this.root);
+        balanceTree(newNode);
     }
 
-    public void addNode(Node currNode, Node newNode) {
+    public void addNode(Node<type> currNode, Node<type> newNode) {
         while (currNode != null) {
-            if(newNode.data <= currNode.data) {
+            if(newNode.data.compareTo(currNode.data) <= 0) {
                 if(currNode.leftChild == null) {
                     currNode.leftChild = newNode;
                     newNode.parent = currNode;
@@ -87,7 +81,7 @@ public class AVLTrees {
         }
     }
 
-    public void updateHeights(Node currNode) {
+    public void updateHeights(Node<type> currNode) {
         if(currNode != null) {
             currNode.relativeHeight = getRelativeHeight(currNode);
             if(currNode.leftChild != null ) updateHeights(currNode.leftChild);
@@ -95,8 +89,8 @@ public class AVLTrees {
         }
     }
 
-    public void rotateLeft(@NotNull Node X) {
-        Node Y = X.rightChild;
+    public void rotateLeft(@NotNull Node<type> X) {
+        Node<type> Y = X.rightChild;
         Y.parent = X.parent;
         if (Y.parent == null)
             this.root = Y;
@@ -115,8 +109,8 @@ public class AVLTrees {
         updateHeights(Y);
     }
 
-    public void rotateRight(@NotNull Node X) {
-        Node Y = X.leftChild;
+    public void rotateRight(@NotNull Node<type> X) {
+        Node<type> Y = X.leftChild;
         Y.parent = X.parent;
         if (Y.parent == null)
             this.root = Y;
@@ -135,7 +129,7 @@ public class AVLTrees {
         updateHeights(Y);
     }
 
-    public void balanceTree(Node currNode) {
+    public void balanceTree(Node<type> currNode) {
         // Notice when the balance factor is +ve, then the node is left-heavy
         // And when the balance factor is -ve, then the node is right-heavy
 
@@ -186,18 +180,15 @@ public class AVLTrees {
 class AVLTreesMain {
     public static void main(String[]args) {
         Scanner in = new Scanner(System.in);
-        AVLTrees avlTrees = new AVLTrees();
+        AVLTrees<Integer> avlTrees = new AVLTrees<Integer>();
+        //Your test code goes here.
 
-        System.out.print("Enter the Tree Data you want to insert as follows (e.g. like 1,2,3,4 .....) \n: ");
-        String[] NodeData = in.next().split(",");   //Taking input of node's data as string
-        int[] treeData = new int[NodeData.length];
+        int[] treeData = {50,23,30,45,56,87,12,35,78};
 
-        //converting string type node data into a list of integers that can be passed to the function.
-        for (int i = 0; i < NodeData.length; i++) {
-            treeData[i] = Integer.parseInt(NodeData[i]);
+        for (int treeDatum : treeData) {
+            avlTrees.createTree(treeDatum);
         }
 
-        avlTrees.createTree(treeData);
         avlTrees.display(avlTrees.root);
         avlTrees = null;
     }

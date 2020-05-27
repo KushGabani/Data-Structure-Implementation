@@ -1,39 +1,27 @@
 package DataStructures;
 
-public class Queue {
-    int[] queue;
+import java.util.ArrayList;
+
+public class Queue <type> {
+    ArrayList<type> queue;
     int front;
     int rear;
-    int size;
 
-    Queue(int size) {
-        this.size = size;
-        queue = new int[size];
+    Queue() {
+        queue = new ArrayList<type>();
         rear = front = -1;
     }
 
-    Queue(int... dataset) {
-        size = dataset.length * 2;
-        queue = new int[size];
-        rear = -1;
-        front = -1;
-
-        for(int data : dataset) {
-            enqueue(data);
-        }
+    public void enqueue(type data) {
+        queue.set(++rear, data);
     }
 
-    public void enqueue(int data) {
-        if(rear != size)
-            queue[++rear] = data;
-        else
-            System.out.println("There is no space in the queue.");
+    public type dequeue() {
+        return (front != -1 && front != rear) ? queue.get(front++) : null;
     }
 
-    public int dequeue() {
-        if(front != -1 && front != rear)
-            return queue[front++];
-        return -1;
+    public type peek() {
+        return (front != 1 && front != rear) ? queue.get(front) : null;
     }
 }
 

@@ -3,8 +3,8 @@ package DataStructures;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Heap {
-    ArrayList<Integer> heap = new ArrayList<>();
+public class Heap<type extends Comparable<type>> {
+    ArrayList<type> heap;
 
     /* Here is how we implement a heap as an array and retrieve values of the nodes.
      * Parent(i) is at (i-1)/2\
@@ -13,30 +13,23 @@ public class Heap {
      */
 
     // Getting the input of the dataSet to be formatted as a heap.
-    public Heap(int... array) {
-        for (int element : array) {
-            heap.add(element);
-        }
-    }
-
-    // Setting the default dataSet to be formatted as a heap.
-    Heap() {
-        this(8,2,9,4,3,7,16,14,1,10);
+    public Heap() {
+        heap = new ArrayList<type>();
     }
 
     //Get the index of the left child of the node, say 'i'
-    private int getLeftChild(ArrayList<Integer> array, int index) {
+    private int getLeftChild(int index) {
         return (2 * index + 1 < heap.size()) ? 2 * index + 1 : -1;
     }
 
     //Get the index of the right child of the node, sat 'i'
-    private int getRightChild(ArrayList<Integer> array, int index) {
+    private int getRightChild(int index) {
         return (2 * index + 2 < heap.size()) ? 2 * index + 2 : -1;
     }
 
     //A trivial function to elements of the array
     private void swap(int a, int b) {
-        int temp = heap.get(a);
+        type temp = heap.get(a);
         heap.set(a, heap.get(b));
         heap.set(b, temp);
     }
@@ -44,17 +37,17 @@ public class Heap {
     //This functions swaps the value in their correct place following the heap rep. invariant (representation invariant)
     // Time complexity - O(log(n))
     public void heapify(int i) {
-        int left = getLeftChild(heap, i);
-        int right = getRightChild(heap, i);
+        int left = getLeftChild(i);
+        int right = getRightChild(i);
         int largestIndex = i;
 
-        if(left != -1 && right == -1 && heap.get(i) < heap.get(left))
+        if(left != -1 && right == -1 && heap.get(i).compareTo(heap.get(left)) < 0)
             largestIndex = left;
-        else if(right != -1 && left == -1 && heap.get(i) < heap.get(right))
+        else if(right != -1 && left == -1 && heap.get(i).compareTo(heap.get(right)) < 0)
             largestIndex = right;
         else if (left != -1 && right != -1) {
-            if(heap.get(i) < heap.get(left) || heap.get(i) < heap.get(right)) {
-                if(heap.get(left) > heap.get(right))
+            if(heap.get(i).compareTo(heap.get(left)) < 0 || heap.get(i).compareTo(heap.get(right)) < 0) {
+                if(heap.get(left).compareTo(heap.get(right)) > 0)
                     largestIndex = left;
                 else
                     largestIndex = right;
@@ -79,7 +72,7 @@ public class Heap {
 
     //To display the heap, we can traverse through the heap linearly because it is visualised in an array.
     public void displayHeap() {
-        for (int element: heap) {
+        for (type element: heap) {
             System.out.print(element + " ");
         }
         System.out.println();
@@ -87,31 +80,33 @@ public class Heap {
 
     //Inserting a value into the heap.
     // We first add the new value to the last place in the array. Then we use heapify() to satisfy the rep. invariant
-    public void insertNode(int value) {
+    public void insertNode(type value) {
         heap.add(value);
         maxHeap();
     }
 
     //Remove a value from the heap at an index
-    public int removeNode(int index) {
+    public type removeNode(int index) {
         //Swap the required value and the last value from the heap.
         //Then remove the last value from the heap.
         //Again run heapify() on that heap
 
         swap(index, heap.size() - 1);
-        int poppedValue = heap.remove(heap.size() - 1);
+        type poppedValue = heap.remove(heap.size() - 1);
         maxHeap();
         return poppedValue;
     }
 
     public void heapSort() {
-        int[] sortedList = new int[heap.size()];
+        ArrayList<type> sortedList = new ArrayList<type>();
 
-        for (int i = 0; i < sortedList.length; i++) {
-            sortedList[i] = removeNode(0);
-            System.out.print(sortedList[i] + " ");
+        while (heap.size() != 0) {
+            sortedList.add(removeNode(0));
         }
 
+        for (type data : sortedList) {
+            System.out.println(data + " ");
+        }
     }
 }
 
@@ -120,16 +115,15 @@ class HeapMain {
     public static void main(String[]args) {
         Scanner in = new Scanner(System.in);
         //Your test code goes here
-
+        Heap<Integer> heap = new Heap<Integer>();
 
         System.out.println("Enter the dataset to enter in the heap (e.g. like 16,14,9,4,10.....\n:");
-        String[] inputAsStr = in.next().split(",");
-        int[] dataSet = new int[inputAsStr.length];
-        for(int i = 0; i < inputAsStr.length; i++) {
-            dataSet[i] = Integer.parseInt(inputAsStr[i]);
+        String[] dataset = in.next().split(",");
+
+        for (String data : dataset) {
+            heap.insertNode(Integer.parseInt(data));
         }
 
-        Heap heap = new Heap(dataSet);
 
         System.out.println("heap before Heap Sort. \n:");
         heap.displayHeap();
@@ -137,7 +131,6 @@ class HeapMain {
         System.out.println("heap after Heap Sort. \n:");
         heap.displayHeap();
 
-        /*
         System.out.print("Enter the element you want to enter in the heap \n: ");
         int valueToAdd = in.nextInt();
 
@@ -148,7 +141,6 @@ class HeapMain {
         System.out.print("Enter the index to be deleted from the array \n:");
         int toBeDeleted = in.nextInt();
         heap.removeNode(toBeDeleted);
-        */
 
         heap.heapSort();
 
