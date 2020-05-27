@@ -312,10 +312,10 @@ NOTE : Many more data structures will be added soon
                            root -  (Node object) A pointer to the root node of the tree.
                            size - (int) The size of the tree i.e. Height of the tree.
      
-     Class Node : This is a nested class+++++++++++++++++++++++++++++++++ that produces nodes for the tree.
+     Class Node : This is a nested class that produces nodes for the tree.
      
      Core varibles of the Class Node :
-                          data - (int) this contains the value of the node.
+                          data - (type) this contains the value of the node.
                           leftChild - (Node Object) A pointer to the left subtree of the node.
                           rightChild - (Node Object) A pointer to the right subtree of the node.
                           parent - (Node Object) A pointer to the parent of the node.
@@ -323,11 +323,6 @@ NOTE : Many more data structures will be added soon
      function Tree() : A constructor to intialise the tree's object.
                       root - sets root to null
                       size - sets size to 0
-                      function createTree() - A call to create a tree
-                      
-     function createTree() : A function to create a tree object
-                              args : (int[]) Dataset for the tree
-                              returns : void
                               
      function addNodes() : A stand alone and a subsidiary function of createTree() function to add nodes into the tree.
                              args : (Node Object) New node to be added, (Node Object) A parent of the tree, generally the root.
@@ -381,8 +376,12 @@ NOTE : Many more data structures will be added soon
                            return : (Node Object) The Node if found, else null;
                            
      function min() : A function to find and return the value of the smallest node.
+                     args : void
+                     returns : (type) the minimum value in the tree.
      
      function max() : A function to find and return the value of the largest node.
+                     args : void
+                     returns : (type) the maximum value in the tree.
      
      function min() : An overloaded function to find and return the smallest node.
                       args : (Node Object) The address of the node from where smallest node must be searched
@@ -410,16 +409,14 @@ NOTE : Many more data structures will be added soon
      Class Node : This is a nested class that forms the fundamental building block of the AVL trees.
      
      Core variables of Class Node : 
-                         data - (int) The actual data of the node
+                         data - (type) The actual data of the node
                          leftChild - (Node Object) A pointer to the left subtree of the curren node
                          rightChild - (Node Object) A pointer to the right subtree of the current node.
                          parent - (Node Objecr) A pointer to the parent node of the current node.
                          relativeHeight - (int) The height of the current node i.e. the longest path to the leaf from the current node.
                          
       function Node() : A constructor to initialise a node for the tree. By default, relative height is 1 and other Node pointers are null.
-                         args : (int) The data to be stored in the node.
-                         
-      function Node() : A overloaded constructor to initialise a node for the tree when the value to be stored is not specified.
+                         args : (type) The data to be stored in the node.
       
       function AVLTrees() A constructor of the class AVLTrees to intialise a new tree object
       
@@ -436,7 +433,7 @@ NOTE : Many more data structures will be added soon
                          returns : void
                          
      function createTree() : This function is used to create an AVL tree while inserting into the tree.
-                         args : (int[]) the dataset to be inserted in the AVL tree.
+                         args : (type) the data to be inserted in the AVL tree.
                          returns : void
                          
      function addNode() : This is a stand alone and a subsidiary function to add nodes into the tree.
