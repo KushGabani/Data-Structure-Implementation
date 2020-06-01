@@ -24,6 +24,7 @@ The following implementation of the data structures are just for education purpo
      <li>Binary Search Tree</li>
      <li>AVL Trees</li>
      <li>Union-Find</li>
+     <li>HashTable using Seperate Chaining</li>
 </ol>
 
 NOTE : Many more data structures will be added soon
@@ -399,7 +400,7 @@ NOTE : Many more data structures will be added soon
 <hr>
 <br>
 
-#### AVLTrees.java -> This file contains the following contents
+#### AVLTrees.java -> This file contains the following contents :-
      
      Class AVLTrees : The class encapsulates the implementation of AVL Trees a.k.a. self-balanced binary search trees.
      
@@ -460,7 +461,7 @@ NOTE : Many more data structures will be added soon
 <hr>
 <br>
      
-#### UnionFind.java -> This file contains the following content
+#### UnionFind.java -> This file contains the following content :-
      class UnionFind : This class encapsulated the implementation of Union-Find data structure.
      
      Core variables of Class UnionFind :
@@ -497,3 +498,52 @@ NOTE : Many more data structures will be added soon
 <br>
 <hr>
 <br>
+
+#### HashTable_SeperateChaining.java -> This file contains the following contents :-
+     Class HashTable_SeperateChaining : This class encapsulates the implementation of HashTable using Seperate Chaining
+     
+     Core variables of Class HashTable_SeperateChaining : <KeyType, ValueType>
+                                   hashTable - (Field[]) The actual HashTable
+                                   capacity - (int) THe maximum capacity of the hashTable
+                                   size - (int) the current size of the hashTable
+                                   
+     Class Field : This is a class that comprises the whole hashTable. It is the fundamental building block of the hashtable.
+     
+     Core Variables of the Class Field : <keyType, valueType>
+                                   key - (keyType) Key of the field
+                                   value - (valueType) Value of the field
+                                   hash - (int) hash value of the key in Integers
+                                   next - (Field) A pointer the next Field object.
+                                   
+     function Field : Constructor function of the class Field that initialises a field object.
+     
+     function isEqual : A function of class Field that checks whether two fields are equal or not.
+                                   args : (Field Object) Another field object to comparet to.
+                                   returns : (boolean) returns true if equal, else false.
+                                   
+     function HashTabe_SeperateChaining : A constructor function to intialise the object of this class
+     
+     function assertIndex : This function allocates index in the hash table according to their hashvalues.
+                              args : (keyType) The key whose index needs to be allocated.
+                              returns : (int) the index allocated for the field
+                              
+     function get : This function returns the value of the field given its key.
+                              args : (keyType) The key that needs to be searched.
+                              returns : (valueType) The value of the field if found, else null.
+                              
+     function add : This function adds a field into the hash table
+                              args : (keyType) the key of the field, (valueType) the value of the field
+                              returns : void
+                              
+     function remove : This function removes a specific field from the field if found
+                              args : (keyType) the key of the field that needs to be removed.
+                              returns : void
+                              
+     function growTableIfNeeded : This function resises the table if the size of the table exceeds its capacity or the threshold factor.
+                              args : null
+                              returns : void
+                              
+<br>
+<hr>
+<br>
+
