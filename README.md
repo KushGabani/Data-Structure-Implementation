@@ -543,6 +543,14 @@ NOTE : Many more data structures will be added soon
                               args : null
                               returns : void
                               
+     function keys() : This function is used to return all the keys inside the hashtable in a list.
+                         args : null
+                         returns : (ArrayList) All the keys stored in the hash table
+                         
+     function values() : This functino is used to return all the values inside the hashtable as a list.
+                         args : null
+                         returns : (ArrayList) All the values stored in the hash table.
+                              
 <br>
 <hr>
 <br>
