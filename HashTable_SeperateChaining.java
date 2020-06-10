@@ -102,6 +102,26 @@ public class HashTable_SeperateChaining <keyType, valueType> {
         }
     }
 
+    public ArrayList<keyType> keys() {
+        ArrayList<keyType>  keys = new ArrayList<>(size);
+        for(Field<keyType, valueType> list : hashTable)
+            if(list != null)
+                for(Field<keyType, valueType> temp = list; temp != null; temp = temp.next)
+                    keys.add(temp.key);
+
+        return keys;
+    }
+
+    public ArrayList<valueType> values() {
+        ArrayList<valueType>  values = new ArrayList<>(size);
+        for(Field<keyType, valueType> list : hashTable)
+            if(list != null)
+                for(Field<keyType, valueType> temp = list; temp != null; temp = temp.next)
+                    values.add(temp.value);
+
+        return values;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
